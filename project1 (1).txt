@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+// Define a structure to represent a BLE beacon
+typedef struct {
+    char mac_address[18];  // MAC address string (e.g., "12:34:56:78:90:00")
+    int battery_level;     // Battery level
+    int accelerometer[3];  // Accelerometer data (x, y, z)
+} Beacon;
+
+// Virtual function to send beacon packets
+void sendBeaconPacket(Beacon* beacon) {
+    // Simulate sending beacon packets
+    printf("Sending 1000 on Packet:\n");
+    printf("MAC Address: %s\n", beacon->mac_address);
+    printf("Battery Level: %d%%\n", beacon->battery_level);
+    printf("Accelerometer Data: (%d, %d, %d)\n", beacon->accelerometer[0], beacon->accelerometer[1], beacon->accelerometer[2]);
+
+    // Check movement status based on accelerometer data
+    int threshold =1000;
+    if (abs(beacon->accelerometer[0]) > threshold || abs(beacon->accelerometer[1]) > threshold || abs(beacon->accelerometer[2]) > threshold) {
+        printf("Beacon is moving\n");
+    } else {
+        printf("Beacon is stationary\n");
+    }
+}
+
+int main() {
+    // Create a Beacon instance
+    Beacon myBeacon;
+    
+    // Initialize beacon data (replace with actual data)
+    strcpy(myBeacon.mac_address, "12:34:56:78:90:00");
+    myBeacon.battery_level = 0x64;
+    myBeacon.accelerometer[0] = 0x0000;  // Replace with actual accelerometer data
+    myBeacon.accelerometer[1] = 0xFF80;  // Replace with actual accelerometer data
+    myBeacon.accelerometer[2] = 0x0138;   // Replace with actual accelerometer data
+
+    // Call the virtual function to send beacon packets
+    sendBeaconPacket(&myBeacon);
+
+    return 0;
+}
+
+/*source file: vi project1.c
+compiler: cc project1.c
+run :./a.out */
+
