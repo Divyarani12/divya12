@@ -1,0 +1,133 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+#define s 5
+template <class type>
+class tag
+{
+type a[s];
+int i,j;
+public:
+void set_data()
+{
+    cout<<"set_data:"<<endl;
+    for(i=0;i<s;i++)
+    cin>>a[i];
+}
+void get_data()
+{
+    cout<<"get data:"<<endl;
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i];
+}
+void sort()
+{
+    cout<<endl<<"sort"<<endl;
+    type t;
+    int i,j;
+    for(i=0;i<s-1;i++)
+    {
+        for(j=0;j<s-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+        }
+    }
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i];
+}
+void swap()
+{
+    cout<<endl<<"swap:"<<endl;
+    type temp;
+    int i,j;
+    for(i=0,j=s-1;i<j;i++,j--)
+    {
+        temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i]; 
+}
+};
+/*class tag1
+{
+char a[s];
+int i,j;
+public:
+void set_data()
+{
+    cout<<"set_data:"<<endl;
+    for(i=0;i<s;i++)
+    cin>>a[i];
+}
+void get_data()
+{
+    cout<<"get data:"<<endl;
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i];
+}
+void sort()
+{
+    cout<<endl<<"sort"<<endl;
+    char t;
+    int i,j;
+    for(i=0;i<s-1;i++)
+    {
+        for(j=0;j<s-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+        }
+    }
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i];
+}
+void swap()
+{
+    cout<<endl<<"swap:"<<endl;
+    char temp;
+    int i,j;
+    for(i=0,j=s-1;i<j;i++,j--)
+    {
+        temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+    for(i=0;i<s;i++)
+    cout<<" "<<a[i]; 
+}
+};*/
+
+
+int main()
+{
+tag<int> obj;
+obj.set_data();
+obj.get_data();
+obj.swap();
+obj.sort();
+cout<<"char data"<<endl;
+tag<char> obj1;
+obj1.set_data();
+obj1.get_data();
+obj1.swap();
+obj1.sort();
+
+cout<<"string data"<<endl;
+tag<string> obj2;
+obj2.set_data();
+obj2.get_data();
+obj2.swap();
+obj2.sort();
+
+}
